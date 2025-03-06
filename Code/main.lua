@@ -181,14 +181,14 @@ function playdate.update()
         if playdate.buttonIsPressed( playdate.kButtonA) then
             doSomething()
         end
-        
+
     --Clear the screen - otherwise stuff just stacks on top
         playdate.graphics.clear()
     --Draw a fresh copy of the UI using functions defined above
         drawMainLife()
         drawCommanderDamage()
-        drawPoison()
-        drawTax()
+     --   drawPoison()
+     --   drawTax()
         drawNav()
         moveCursor()
     end
