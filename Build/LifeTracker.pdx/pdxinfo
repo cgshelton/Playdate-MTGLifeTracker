@@ -1,2 +1,8 @@
 pdxversion=20601
-buildtime=794579162
+buildtime=794854800
+name=LifeTracker
+author=Cam
+description=A Simple Commander Life Tracker
+bundleID=com.cam.LifeTracker
+version=1.2.1
+buildNumber=124
