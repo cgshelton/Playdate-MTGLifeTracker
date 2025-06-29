@@ -4,7 +4,7 @@
 -- Code by: Cameron Shelton
 -- Version: 1.2.2
 --
--- NEXT Release: Better Graphics, mess with fonts
+-- NEXT Release: Better Graphics, mess with fonts, fix navigation
 --
 -- Future Plans: 
 --      -relative instead of absolute coords
