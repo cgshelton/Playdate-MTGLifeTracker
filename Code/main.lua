@@ -3,6 +3,7 @@
 -- Design by: Cameron Shelton
 -- Code by: Cameron Shelton
 -- Version: 1.2.2
+-- Date: 7.23.26
 --
 -- NEXT Release: Better Graphics, mess with fonts, fix navigation
 --
@@ -10,7 +11,7 @@
 --      -relative instead of absolute coords
 --      -much better art
 --      -continue code cleanup as I learn
-
+--      -Learn how checkmark menu items works and add a toggle for disabling AutoLock
 
 --Known Bugs: 
 -- -Negative Commander Damage, Commander Tax & Poison Counters
@@ -25,15 +26,11 @@
 --version=1.2.1
 --buildNumber=124
 
-
 --Default Playdate imports
 import "CoreLibs/object"
 import "CoreLibs/graphics"
 import "CoreLibs/sprites"
 import "CoreLibs/timer"   
-
-
-
 
 --Define scale, refresh rate & other graphics options
 playdate.display.setScale(1)
@@ -45,10 +42,17 @@ bigFont = playdate.graphics.font.new("Roobert-24-Medium")
 local menu = playdate.getSystemMenu()
 menu:addMenuItem("Reset Tracker", function() initalizeTracker() end)
 
+--Set default state to Prevent Playdate from sleeping so we always have access to our life tracker
+--We'll add a button to the playdate menu to toggle this later
+--menu:addCheckmarkMenuItem("Disable Sleep", [True], function() toggleAutoLock() end)
+--AutoLockDisabled = "True"
+playdate.setAutoLockDisabled(disable)
+
+--
 --define some things about the game state, whether we are in title screen, in-game, or death mode
+--
 gameState = 2 -- 0 = death, 1 = in-game, 2 = show title screen
 --also whether we are adding or subtracting (this is used to save on multiple functions for adding and subtracting based on button presses)
-
 addorsub = 1 -- 1 = add, 2 = subtract
 
 --define information about the menu's cursor
@@ -97,7 +101,11 @@ function drawCursor()
     playdate.graphics.drawLine(cursorLocation[1],cursorLocation[2],(cursorLocation[1] + cursorLength),cursorLocation[2])    
 end
 
-
+--Function to modify our AutoLock state based on the state of the checkbox in the menu.
+--function toggleAutoLock()
+--    if AutoLockDisabled = "True"
+--        AutoLockDisabled = "False"
+--        playdate.menu.item
 
  --Define default values for Life total & damage taken -- function also used to reset the tracker
 function initalizeTracker()
